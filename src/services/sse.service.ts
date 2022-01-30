@@ -44,7 +44,7 @@ class SseService {
   }
 
   private configureEventEmitter() {
-    this.emitter.once('newOrder', async (order) => {
+    this.emitter.on('newOrder', async (order) => {
       const redisCurrentClient = await this.sseMapper.find(order.clientId);
       const currentClientLocal = this.clients.find(
         (client) => client.token === order.clientId,
@@ -61,7 +61,7 @@ class SseService {
         } catch (error) {
           currentClientLocal.res.write(`data: ${JSON.stringify(order.order)}\n\n`);
         } finally {
-          await this.sseMapper.delete(order.clientId);
+          // await this.sseMapper.delete(order.clientId);
         }
       }
     });
