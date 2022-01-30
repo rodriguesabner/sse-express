@@ -1,16 +1,19 @@
-import Koa from 'koa';
+import express, { Application } from 'express';
 import SseRoute from './sse.route';
 
 class Routes {
+  public app: Application;
+
   private routeSSE: SseRoute;
 
-  constructor(app: Koa) {
-    this.routeSSE = new SseRoute(app);
+  constructor() {
+    this.app = express();
+    this.routeSSE = new SseRoute();
     this.routes();
   }
 
   routes() {
-    this.routeSSE.routes();
+    this.app.use('/sse', this.routeSSE.router);
   }
 }
 

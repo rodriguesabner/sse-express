@@ -1,5 +1,4 @@
 import Cache from '../vendor/cache';
-import { SseResponseSendData } from '../interfaces/sse.interface';
 
 class SseMapper {
   private cache: Cache;
@@ -8,7 +7,7 @@ class SseMapper {
     this.cache = new Cache();
   }
 
-  async find(clientId: string): Promise<SseResponseSendData> {
+  async find(clientId: string): Promise<any> {
     const data = await this.cache.get(clientId);
     return data;
   }

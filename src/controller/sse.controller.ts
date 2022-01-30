@@ -12,7 +12,7 @@ class SseController {
     const { token } = req.params;
 
     if (!token) {
-      res.status(400).json({message: 'Token is required'});
+      res.status(400).json({ message: 'Token is required' });
       return;
     }
 
@@ -20,7 +20,7 @@ class SseController {
   }
 
   async getUserInfo(req: Request, res: Response) {
-    const {token: id} = req.params;
+    const { token: id } = req.params;
     const newFact = req.body;
 
     await this.sseService.sendInfoToClient(id, newFact, res);

@@ -1,8 +1,8 @@
 import express from 'express';
 import zlib from 'zlib';
+import compress from 'compression';
+import cors from 'cors';
 import Routes from './routes';
-import compress from "compression";
-import cors from "cors";
 
 class Server {
   public app: express.Application;
@@ -35,7 +35,7 @@ class Server {
 
   routes() {
     // eslint-disable-next-line no-new
-    new Routes(this.app);
+    this.app.use('', new Routes().app);
   }
 }
 
