@@ -34,7 +34,6 @@ class Server {
   }
 
   routes() {
-    // eslint-disable-next-line no-new
     this.app.use('', new Routes().app);
   }
 }
