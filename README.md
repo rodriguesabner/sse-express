@@ -38,5 +38,4 @@ https://github.com/rodriguesabner/sse-vue
 Enquanto fazia os testes, percebi alguns detalhes.
 
 - Eu NÃO posso chamar o EventSource em uma rota POST
-- Caso duas janelas sejam abertas com **tokens**/**ids** diferentes, o servidor irá emitir apenas para a última que foi aberta, e invalidando a primeira.
 - Caso duas janelas sejam abertas com **tokens**/**ids** IGUAIS, o servidor irá emitir apenas para a primeira.
